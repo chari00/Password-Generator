@@ -103,25 +103,48 @@ let upperCasedCharacters = [
 //CONCAT ARRAYS
 //const = ()
 
-const charSet = specialCharacters.concat(
-  numericCharacters,
-  upperCasedCharacters,
-  lowerCasedCharacters
-);
+const charSet = [];
+// let charSet = specialCharacters.concat(
+//   numericCharacters,
+//   upperCasedCharacters,
+//   lowerCasedCharacters
+// );
+const minCharLen = 10;
+const maxCharLen = 64;
 
-console.log(charSet);
-
-function getPasswordOptions() {}
-if (charSet === true) {
-} else {
-  alert(console.log("At least 10 characters but no more than 64"));
-  alert(console.log("Lowercase"));
-  alert(console.log("Uppercase"));
-  alert(console.log("Numeric"));
-  alert(console.log("Special characters ($@%&*, etc)"));
+function getPasswordOptions() {
+  charSet = charSet.concat(
+    specialCharacters,
+    numericCharacters,
+    upperCasedCharacters,
+    lowerCasedCharacters
+  );
 }
 
-console.log(getPasswordOptions);
+// if (upperCasedCharacters === false) {
+// } else {
+//   alert("Uppercase");
+// }
+// if (lowerCasedCharacters === false) {
+// } else {
+//   alert("Lowercase");
+// }
+// if (numericCharacters === false) {
+// } else {
+//   alert("Numeric");
+// }
+// if (specialCharacters === false) {
+// } else {
+//   alert("Special characters ($@%&*, etc)");
+// }
+// if (minCharLen === false) {
+// } else {
+//   alert("At least 10 characters but no more than 64");
+// }
+// if (maxCharLen === false) {
+// } else {
+//   alert("At least 10 characters but no more than 64");
+// }
 
 // Function for getting a random element from an array
 // function getRandom(arr) {
@@ -143,7 +166,14 @@ console.log(getRandomCharSet());
 // console.log(Math.floor(Math.random() * 64));
 
 // Function to generate password with user input
-function generatePassword() {}
+function generatePassword() {
+  let practicePassword = "";
+  for (let i = 0; i < 64; i++) {
+    practicePassword += "j";
+  }
+
+  return practicePassword;
+}
 
 // Get references to the #generate element
 let generateBtn = document.querySelector("#generate");
@@ -152,7 +182,6 @@ let generateBtn = document.querySelector("#generate");
 function writePassword() {
   let password = generatePassword();
   let passwordText = document.querySelector("#password");
-  // document.getElementsByTagName("placeholder").readOnly = false;
 
   passwordText.value = password;
 }
