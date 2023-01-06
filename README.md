@@ -67,7 +67,9 @@ https://chari00.github.io/Password-Generator/
 
 ### URL for resources
 
--
+- https://www.w3schools.com/tags/att_textarea_readonly.asp
+
+- https://stackoverflow.com/questions/27312717/how-to-make-textarea-with-readonly-false-editable
 
 ## 7. License
 
