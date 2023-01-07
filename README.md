@@ -69,7 +69,11 @@ https://chari00.github.io/Password-Generator/
 
 - https://www.w3schools.com/tags/att_textarea_readonly.asp
 
-- https://stackoverflow.com/questions/27312717/how-to-make-textarea-with-readonly-false-editable
+- https://javascript.info/alert-prompt-confirm
+
+- https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt
+
+- https://stackoverflow.com/questions/21727317/how-to-check-confirm-password-field-in-form-without-reloading-page
 
 ## 7. License
 
