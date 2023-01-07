@@ -92,11 +92,11 @@ let upperCasedCharacters = [
 //CONCAT ARRAYS
 //const = ()
 
-const charSet = specialCharacters.concat(
-  numericCharacters,
-  upperCasedCharacters,
-  lowerCasedCharacters
-);
+// const charSet = specialCharacters.concat(
+//   numericCharacters,
+//   upperCasedCharacters,
+//   lowerCasedCharacters
+// );
 
 let passLength = 0;
 let passLengthResponse = "";
@@ -105,7 +105,6 @@ let upperCaseRequired = "";
 let lowerCaseRequired = "";
 let numericRequired = 0;
 let optionsValid = false;
-
 let constructPassword = "";
 
 function getPasswordOptions() {
