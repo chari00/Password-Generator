@@ -97,10 +97,6 @@ const charSet = specialCharacters.concat(
   upperCasedCharacters,
   lowerCasedCharacters
 );
-// specialCharacters = true;
-// numericCharacters = true;
-// upperCasedCharacters = true;
-// lowerCasedCharacters = true;
 
 let passLength = 0;
 let passLengthResponse = "";
@@ -108,61 +104,54 @@ let specialCharRequired = "";
 let upperCaseRequired = "";
 let lowerCaseRequired = "";
 let numericRequired = 0;
+let optionsValid = false;
 
-let password = "";
+let constructPassword = "";
 
 function getPasswordOptions() {
-  let passLengthResponse = prompt("What lenght of password do you require?");
+  let passLengthResponse = prompt("What length of password do you require?");
   passLength = Number(passLengthResponse);
   if (passLength > 9 && passLength < 65) {
-    passLengthResponse = charSet.length < 10 || charSet.length > 64;
+    //passLengthResponse = charSet.length < 10 || charSet.length > 64;
     specialCharRequired = confirm("Do you require Special Characters?");
-    upperCaseRequired = confirm("Do you want Uppercase Characters?");
-    lowerCaseRequired = confirm("Do you want Lowercase Characters?");
-    numericRequired = confirm("Do you want Numeric?");
+    upperCaseRequired = confirm("Do you require Uppercase Characters?");
+    lowerCaseRequired = confirm("Do you require Lowercase Characters?");
+    numericRequired = confirm("Do you require Numeric?");
+    if (
+      specialCharRequired ||
+      upperCaseRequired ||
+      lowerCaseRequired ||
+      numericRequired
+    ) {
+      // all valid and ok to generate password
+      optionsValid = true;
+    } else {
+      alert("At least one character type must be selected.");
+    }
   } else {
-    alert("Please enter a number between 10 and 64.");
+    alert(
+      "Password should be between 10 and 64 characters long. Please re-generate."
+    );
   }
-
-  // console.log(passLength);
-  // if ([passLenght === true]) {
-  // alert ("Please write a number between 10 and 64." )
-  //   } else {
-  //     alert ('Please enter a number between 10 and 64.')
 }
-// }
-// console.log(getPasswordOptions);
-
-// if (upperCasedCharacters === false) {
-// } else {
-//   alert("Must have Uppercase.");
-// }
-// if (lowerCasedCharacters === false) {
-// } else {
-//   alert("Must have Lowercase.");
-// }
-// if (numericCharacters === false) {
-// } else {
-//   alert("Must have Numeric.");
-// }
-// if (specialCharacters === false) {
-// } else {
-//   alert("Must have  characters ($@%&*, etc).");
-// }
-// if (minCharLen === false) {
-// } else {
-//   alert("password at least 10 characters but no more than 64.");
-// }
-// if (maxCharLen === false) {
-// } else {
-//   alert("password at least 10 characters but no more than 64.");
-// }
-
 // Function for getting a random element from an array
 // function getRandom(arr) {
-function getRandomCharSet() {
-  return Math.floor(Math.random() * 64);
+function getRandom(arr) {
+  randomCharArr = Math.floor(Math.random() * arr.length);
+  // random((arr[0] && arr[arr.length]));
+  console.log("random  " + arr[randomCharArr]);
+  console.log("length  " + arr.length);
+  console.log("arr  " + randomCharArr);
+
+  return arr[randomCharArr];
 }
+
+// for (let i = 0; i < passLength; i++) {
+//   //   if (upperCasedCharacters === true) {
+//   //   }
+//   // console.log(randomCharArr);
+//   return Math.floor(Math.random() * 64);
+// }
 // console.log(getRandomCharSet());
 
 // function charSet() {
@@ -179,17 +168,60 @@ function getRandomCharSet() {
 
 // Function to generate password with user input
 function generatePassword() {
-  let practicePassword = "";
+  let constructPassword = "";
+  let letterCount = 0;
 
   getPasswordOptions();
-
-  for (let i = 0; i < passLength; i++) {
-    practicePassword += "j";
+  if (optionsValid) {
+    for (let i = 0; i < passLength; i++) {
+      if (upperCaseRequired === true) {
+        constructPassword = constructPassword + getRandom(upperCasedCharacters);
+        letterCount = letterCount + 1;
+        if (letterCount === passLength) {
+          break;
+        }
+        //constructPassword = constructPassword + getRandom(upperCasedCharacters);
+      }
+      if (lowerCaseRequired === true) {
+        constructPassword = constructPassword + getRandom(lowerCasedCharacters);
+        letterCount = letterCount + 1;
+        if (letterCount === passLength) {
+          break;
+        }
+        //constructPassword = constructPassword + getRandom(lowerCasedCharacters);
+      }
+      if (numericRequired === true) {
+        constructPassword = constructPassword + getRandom(numericCharacters);
+        letterCount = letterCount + 1;
+        if (letterCount === passLength) {
+          break;
+        }
+        //constructPassword = constructPassword + getRandom(numericCharacters);
+      }
+      if (specialCharRequired === true) {
+        constructPassword = constructPassword + getRandom(specialCharacters);
+        letterCount = letterCount + 1;
+        if (letterCount === passLength) {
+          break;
+        }
+        //constructPassword = constructPassword + getRandom(specialCharacters);
+      }
+      // constructPassword += "5";
+    }
+    return constructPassword;
   }
 
-  return practicePassword;
+  // return constructPassword;
+  // let password = "";
+  // for (let i = 0; i < passLength; i++) {
+  //   if (upperCasedCharacters === true) {
+  //   }
+  // console.log(randomCharArr);
+  //   password += "j";
+  // }
+  // return practicePassword;
+  // }
 }
-
 // Get references to the #generate element
 let generateBtn = document.querySelector("#generate");
 
