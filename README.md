@@ -18,40 +18,109 @@ This is a responsive app for generating password.
 
 ### Image of the project in console view.
 
-<img src="./images/.png">
+- Image of the project for user to input the preffered password length.
+
+  <img src="./images/lengthrequired.png">
+
+- Image of the project when the user input did not meet the password lenght criteria.
+
+  <img src="./images/insufficientLength.png">
+
+- Images of prompt for password generating criteria.
+
+  <img src="./images/promptUpperC.png">
+
+  <img src="./images/promptLowerC.png">
+
+  <img src="./images/promptNumeric.png">
+
+  <img src="./images/promptSpecial.png">
+
+  - Image when all of the required criteria for generating password has been met.
+
+  <img src="./images/allPromptAnswered.png">
+
+  ### Image of the project in Webpage.
+
+  <img src="./images/webpage.png">
 
 ## 3. Built with:
 
 - javascript
 - html
+- css
 
 ## 4. What I learned
 
-To see how you can add code snippets, see below:
+To see how you can add code functions, see below:
 
-- To define a variable;
-
-  let count = finances.length;
-
-  let monthlyDifferenceTotal = 0;
-
-  let greatestIncrease = 0;
-
-  let greatestDecrease = 0;
-
-  let greatestIncreaseMonth = "Date";
-
-- To create a for loop;
-
-  for (let index = 0; index < array.length; index++) {
-  const element = array[index];
+- // Function to prompt user for password options
+  function getPasswordOptions() {
+  let passLengthResponse = prompt("What length of password do you require?");
+  passLength = Number(passLengthResponse);
+  if (passLength > 9 && passLength < 65) {
+  specialCharRequired = confirm("Do you require Special Characters?");
+  upperCaseRequired = confirm("Do you require Uppercase Characters?");
+  lowerCaseRequired = confirm("Do you require Lowercase Characters?");
+  numericRequired = confirm("Do you require Numeric?");
+  if (
+  specialCharRequired ||
+  upperCaseRequired ||
+  lowerCaseRequired ||
+  numericRequired
+  ) {
+  // all valid and ok to generate password
+  optionsValid = true;
+  } else {
+  alert("At least one character type must be selected.");
+  }
+  } else {
+  alert(
+  "Password should be between 10 and 64 characters long. Please re-generate."
+  );
+  }
   }
 
-- To print in console;
+- // Function to generate password with user input
+  function generatePassword() {
+  let constructPassword = "";
+  let charCount = 0;
 
-  console.log("Average Change: " + averageTotal);
-
-  console.log("Greatest Increase: " + greatestIncreaseMonth + ": $" + greatestIncrease);
+  getPasswordOptions();
+  if (optionsValid) {
+  for (let i = 0; i < passLength; i++) {
+  if (upperCaseRequired === true) {
+  constructPassword = constructPassword + getRandom(upperCasedCharacters);
+  charCount = charCount + 1;
+  if (charCount === passLength) {
+  break;
+  }
+  }
+  if (lowerCaseRequired === true) {
+  constructPassword = constructPassword + getRandom(lowerCasedCharacters);
+  charCount = charCount + 1;
+  if (charCount === passLength) {
+  break;
+  }
+  }
+  if (numericRequired === true) {
+  constructPassword = constructPassword + getRandom(numericCharacters);
+  charCount = charCount + 1;
+  if (charCount === passLength) {
+  break;
+  }
+  }
+  if (specialCharRequired === true) {
+  constructPassword = constructPassword + getRandom(specialCharacters);
+  charCount = charCount + 1;
+  if (charCount === passLength) {
+  break;
+  }
+  }
+  }
+  return constructPassword;
+  }
+  }
 
 ## 5. Links
 
@@ -67,7 +136,7 @@ https://chari00.github.io/Password-Generator/
 
 ### URL for resources
 
-- https://www.w3schools.com/tags/att_textarea_readonly.asp
+- https://www.w3schools.com/jsref/jsref_random.asp
 
 - https://javascript.info/alert-prompt-confirm
 
