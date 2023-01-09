@@ -88,16 +88,6 @@ let upperCasedCharacters = [
   "Z",
 ];
 
-// Function to prompt user for password options
-//CONCAT ARRAYS
-//const = ()
-
-// const charSet = specialCharacters.concat(
-//   numericCharacters,
-//   upperCasedCharacters,
-//   lowerCasedCharacters
-// );
-
 let passLength = 0;
 let passLengthResponse = "";
 let specialCharRequired = "";
@@ -107,11 +97,12 @@ let numericRequired = 0;
 let optionsValid = false;
 let constructPassword = "";
 
+// Function to prompt user for password options
+
 function getPasswordOptions() {
   let passLengthResponse = prompt("What length of password do you require?");
   passLength = Number(passLengthResponse);
   if (passLength > 9 && passLength < 65) {
-    //passLengthResponse = charSet.length < 10 || charSet.length > 64;
     specialCharRequired = confirm("Do you require Special Characters?");
     upperCaseRequired = confirm("Do you require Uppercase Characters?");
     lowerCaseRequired = confirm("Do you require Lowercase Characters?");
@@ -134,92 +125,59 @@ function getPasswordOptions() {
   }
 }
 // Function for getting a random element from an array
-// function getRandom(arr) {
+//Generate a randome whole number from the array length starting at 0.
 function getRandom(arr) {
   randomCharArr = Math.floor(Math.random() * arr.length);
-  // random((arr[0] && arr[arr.length]));
-  console.log("random  " + arr[randomCharArr]);
-  console.log("length  " + arr.length);
-  console.log("arr  " + randomCharArr);
+
+  //Check the if the app is generating random length, random index of the array, and random password characters.
+  //Clik the Generate Password and refresh the live server in every test.
+  // console.log("length  " + arr.length);
+  // console.log("arr  " + randomCharArr);
+  // console.log("random character  " + arr[randomCharArr]);
 
   return arr[randomCharArr];
 }
 
-// for (let i = 0; i < passLength; i++) {
-//   //   if (upperCasedCharacters === true) {
-//   //   }
-//   // console.log(randomCharArr);
-//   return Math.floor(Math.random() * 64);
-// }
-// console.log(getRandomCharSet());
-
-// function charSet() {
-//   for (let i = 0; i < charSet.length; i++) {
-//     console.log = charSet[i];
-//   }
-// }
-// console.log(charSet);
-
-// }
-
-// function getRandom() {}
-// console.log(Math.floor(Math.random() * 64));
-
 // Function to generate password with user input
+
 function generatePassword() {
   let constructPassword = "";
-  let letterCount = 0;
-
+  let charCount = 0;
+  //For loop to generate password base to the character length  the user input.
   getPasswordOptions();
   if (optionsValid) {
     for (let i = 0; i < passLength; i++) {
       if (upperCaseRequired === true) {
         constructPassword = constructPassword + getRandom(upperCasedCharacters);
-        letterCount = letterCount + 1;
-        if (letterCount === passLength) {
+        charCount = charCount + 1;
+        if (charCount === passLength) {
           break;
         }
-        //constructPassword = constructPassword + getRandom(upperCasedCharacters);
       }
       if (lowerCaseRequired === true) {
         constructPassword = constructPassword + getRandom(lowerCasedCharacters);
-        letterCount = letterCount + 1;
-        if (letterCount === passLength) {
+        charCount = charCount + 1;
+        if (charCount === passLength) {
           break;
         }
-        //constructPassword = constructPassword + getRandom(lowerCasedCharacters);
       }
       if (numericRequired === true) {
         constructPassword = constructPassword + getRandom(numericCharacters);
-        letterCount = letterCount + 1;
-        if (letterCount === passLength) {
+        charCount = charCount + 1;
+        if (charCount === passLength) {
           break;
         }
-        //constructPassword = constructPassword + getRandom(numericCharacters);
       }
       if (specialCharRequired === true) {
         constructPassword = constructPassword + getRandom(specialCharacters);
-        letterCount = letterCount + 1;
-        if (letterCount === passLength) {
+        charCount = charCount + 1;
+        if (charCount === passLength) {
           break;
         }
-        //constructPassword = constructPassword + getRandom(specialCharacters);
       }
-      // constructPassword += "5";
     }
     return constructPassword;
   }
-
-  // return constructPassword;
-  // let password = "";
-  // for (let i = 0; i < passLength; i++) {
-  //   if (upperCasedCharacters === true) {
-  //   }
-  // console.log(randomCharArr);
-  //   password += "j";
-  // }
-  // return practicePassword;
-  // }
 }
 // Get references to the #generate element
 let generateBtn = document.querySelector("#generate");
@@ -230,8 +188,6 @@ function writePassword() {
   let passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
-  //should call validation??
 }
 
 // Add event listener to generate button
