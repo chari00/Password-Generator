@@ -54,7 +54,7 @@ This is a responsive app for generating password.
 
 To see how you can add code functions, see below:
 
-- // Function to prompt user for password options
+// Function to prompt user for password options
   function getPasswordOptions() {
   let passLengthResponse = prompt("What length of password do you require?");
   passLength = Number(passLengthResponse);
@@ -81,7 +81,7 @@ To see how you can add code functions, see below:
   }
   }
 
-- // Function to generate password with user input
+// Function to generate password with user input
   function generatePassword() {
   let constructPassword = "";
   let charCount = 0;
