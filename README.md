@@ -54,7 +54,8 @@ This is a responsive app for generating password.
 
 To see how you can add code functions, see below:
 
-// Function to prompt user for password options
+  // Function to prompt user for password options
+  
   function getPasswordOptions() {
   let passLengthResponse = prompt("What length of password do you require?");
   passLength = Number(passLengthResponse);
@@ -63,13 +64,13 @@ To see how you can add code functions, see below:
   upperCaseRequired = confirm("Do you require Uppercase Characters?");
   lowerCaseRequired = confirm("Do you require Lowercase Characters?");
   numericRequired = confirm("Do you require Numeric?");
+  
   if (
   specialCharRequired ||
   upperCaseRequired ||
   lowerCaseRequired ||
   numericRequired
-  ) {
-  // all valid and ok to generate password
+  ) {    
   optionsValid = true;
   } else {
   alert("At least one character type must be selected.");
